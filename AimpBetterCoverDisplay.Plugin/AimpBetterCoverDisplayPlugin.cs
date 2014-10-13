@@ -51,7 +51,7 @@ namespace AimpBetterCoverDisplay.Plugin
             {
                 try
                 {
-                    m_proc.Kill();
+                    m_proc.CloseMainWindow();
                 }
                 catch
                 {
