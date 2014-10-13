@@ -16,7 +16,6 @@ namespace AimpBetterCoverDisplay.UI
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            LordJZ.WinAPI.Process.SetDpiAwareness(LordJZ.WinAPI.ProcessDpiAwareness.PerMonitorDpiAware);
             LordJZ.Presentation.Controls.BaseWindow.PerMonitorDpiAware = true;
 
             base.OnStartup(e);

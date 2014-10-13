@@ -25,6 +25,11 @@ namespace AimpBetterCoverDisplay.UI
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
 
             WindowPlacement placement = Config.Instance.Placement;
             if (placement != null)

@@ -126,7 +126,10 @@ namespace AimpBetterCoverDisplay.Plugin
         {
             string pipename = "ABCD_" + Process.GetCurrentProcess().Id;
 
-            m_proc = Process.Start("AimpBetterCoverDisplay.UI.exe", "/pipename " + pipename);
+            ProcessStartInfo psi = new ProcessStartInfo("AimpBetterCoverDisplay.UI.exe", "/pipename " + pipename);
+            psi.UseShellExecute = false;
+            psi.EnvironmentVariables["__COMPAT_LAYER"] = string.Empty;
+            m_proc = Process.Start(psi);
 
             await Task.Delay(1000);
 
