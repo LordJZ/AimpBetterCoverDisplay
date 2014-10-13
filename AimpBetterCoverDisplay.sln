@@ -9,26 +9,73 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AimpBetterCoverDisplay", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AimpBetterCoverDisplay.Plugin", "AimpBetterCoverDisplay.Plugin\AimpBetterCoverDisplay.Plugin.csproj", "{629A21B9-8016-4766-B926-67851FD88406}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deps", "deps", "{F9B3C08A-101F-422B-965B-C4778C8CAFF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LordJZ", "deps\LordJZ\LordJZ.csproj", "{BCBF18DB-31A8-4553-BCBF-77D6C7790259}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LordJZ.Presentation", "deps\LordJZ.Presentation\LordJZ.Presentation.csproj", "{DC0D7136-5F0D-4FBD-BD8D-B4F28DC10C11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LordJZ.Tests", "deps\LordJZ.Tests\LordJZ.Tests.csproj", "{9AD0F1B4-0287-4E8D-9BBE-6A2738EF8063}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LordJZ.WinAPI", "deps\LordJZ.WinAPI\LordJZ.WinAPI.csproj", "{44947934-AC3F-40E0-9303-21EF5975FD7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug No Contracts|Any CPU = Debug No Contracts|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49D80BC2-D119-4ACF-8B5E-E569F1AEE9D0}.Debug No Contracts|Any CPU.ActiveCfg = Debug|Any CPU
+		{49D80BC2-D119-4ACF-8B5E-E569F1AEE9D0}.Debug No Contracts|Any CPU.Build.0 = Debug|Any CPU
 		{49D80BC2-D119-4ACF-8B5E-E569F1AEE9D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{49D80BC2-D119-4ACF-8B5E-E569F1AEE9D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49D80BC2-D119-4ACF-8B5E-E569F1AEE9D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49D80BC2-D119-4ACF-8B5E-E569F1AEE9D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1880E778-F056-404C-AD21-816AA0EFAF95}.Debug No Contracts|Any CPU.ActiveCfg = Debug|Any CPU
+		{1880E778-F056-404C-AD21-816AA0EFAF95}.Debug No Contracts|Any CPU.Build.0 = Debug|Any CPU
 		{1880E778-F056-404C-AD21-816AA0EFAF95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1880E778-F056-404C-AD21-816AA0EFAF95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1880E778-F056-404C-AD21-816AA0EFAF95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1880E778-F056-404C-AD21-816AA0EFAF95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{629A21B9-8016-4766-B926-67851FD88406}.Debug No Contracts|Any CPU.ActiveCfg = Debug|Any CPU
+		{629A21B9-8016-4766-B926-67851FD88406}.Debug No Contracts|Any CPU.Build.0 = Debug|Any CPU
 		{629A21B9-8016-4766-B926-67851FD88406}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{629A21B9-8016-4766-B926-67851FD88406}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{629A21B9-8016-4766-B926-67851FD88406}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{629A21B9-8016-4766-B926-67851FD88406}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCBF18DB-31A8-4553-BCBF-77D6C7790259}.Debug No Contracts|Any CPU.ActiveCfg = Debug No Contracts|Any CPU
+		{BCBF18DB-31A8-4553-BCBF-77D6C7790259}.Debug No Contracts|Any CPU.Build.0 = Debug No Contracts|Any CPU
+		{BCBF18DB-31A8-4553-BCBF-77D6C7790259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCBF18DB-31A8-4553-BCBF-77D6C7790259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCBF18DB-31A8-4553-BCBF-77D6C7790259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCBF18DB-31A8-4553-BCBF-77D6C7790259}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC0D7136-5F0D-4FBD-BD8D-B4F28DC10C11}.Debug No Contracts|Any CPU.ActiveCfg = Debug No Contracts|Any CPU
+		{DC0D7136-5F0D-4FBD-BD8D-B4F28DC10C11}.Debug No Contracts|Any CPU.Build.0 = Debug No Contracts|Any CPU
+		{DC0D7136-5F0D-4FBD-BD8D-B4F28DC10C11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC0D7136-5F0D-4FBD-BD8D-B4F28DC10C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC0D7136-5F0D-4FBD-BD8D-B4F28DC10C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC0D7136-5F0D-4FBD-BD8D-B4F28DC10C11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AD0F1B4-0287-4E8D-9BBE-6A2738EF8063}.Debug No Contracts|Any CPU.ActiveCfg = Debug No Contracts|Any CPU
+		{9AD0F1B4-0287-4E8D-9BBE-6A2738EF8063}.Debug No Contracts|Any CPU.Build.0 = Debug No Contracts|Any CPU
+		{9AD0F1B4-0287-4E8D-9BBE-6A2738EF8063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AD0F1B4-0287-4E8D-9BBE-6A2738EF8063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AD0F1B4-0287-4E8D-9BBE-6A2738EF8063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AD0F1B4-0287-4E8D-9BBE-6A2738EF8063}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44947934-AC3F-40E0-9303-21EF5975FD7F}.Debug No Contracts|Any CPU.ActiveCfg = Debug No Contracts|Any CPU
+		{44947934-AC3F-40E0-9303-21EF5975FD7F}.Debug No Contracts|Any CPU.Build.0 = Debug No Contracts|Any CPU
+		{44947934-AC3F-40E0-9303-21EF5975FD7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44947934-AC3F-40E0-9303-21EF5975FD7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44947934-AC3F-40E0-9303-21EF5975FD7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44947934-AC3F-40E0-9303-21EF5975FD7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BCBF18DB-31A8-4553-BCBF-77D6C7790259} = {F9B3C08A-101F-422B-965B-C4778C8CAFF6}
+		{DC0D7136-5F0D-4FBD-BD8D-B4F28DC10C11} = {F9B3C08A-101F-422B-965B-C4778C8CAFF6}
+		{9AD0F1B4-0287-4E8D-9BBE-6A2738EF8063} = {F9B3C08A-101F-422B-965B-C4778C8CAFF6}
+		{44947934-AC3F-40E0-9303-21EF5975FD7F} = {F9B3C08A-101F-422B-965B-C4778C8CAFF6}
 	EndGlobalSection
 EndGlobal

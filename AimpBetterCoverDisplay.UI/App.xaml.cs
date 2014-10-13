@@ -16,9 +16,14 @@ namespace AimpBetterCoverDisplay.UI
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            LordJZ.WinAPI.Process.SetDpiAwareness(LordJZ.WinAPI.ProcessDpiAwareness.PerMonitorDpiAware);
+            LordJZ.Presentation.Controls.BaseWindow.PerMonitorDpiAware = true;
+
             base.OnStartup(e);
 
-            StartWcfServer(e.Args[Array.IndexOf(e.Args, "/pipename") + 1]);
+            int idx = Array.IndexOf(e.Args, "/pipename");
+            if (idx >= 0)
+                StartWcfServer(e.Args[idx + 1]);
         }
 
         static void StartWcfServer(string pipename)

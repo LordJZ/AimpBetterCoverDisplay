@@ -1,8 +1,8 @@
-﻿<Window x:Class="AimpBetterCoverDisplay.UI.MainWindow"
+﻿<pc:BaseWindow x:Class="AimpBetterCoverDisplay.UI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
-</Window>
+        xmlns:pc="clr-namespace:LordJZ.Presentation.Controls;assembly=LordJZ.Presentation"
+        Title="MainWindow" Height="350" Width="525" WindowStyle="None" ResizeMode="CanResize" ShowInTaskbar="False"
+               Style="{StaticResource DefaultBaseWindowStyle}" Background="#20111111" AllowsTransparency="True">
+  <Image Name="ImageControl" Stretch="Uniform" StretchDirection="DownOnly" Visibility="Collapsed"/>
+</pc:BaseWindow>
