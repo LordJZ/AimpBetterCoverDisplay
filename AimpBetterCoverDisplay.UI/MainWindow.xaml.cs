@@ -51,6 +51,20 @@ namespace AimpBetterCoverDisplay.UI
                 DragMove();
         }
 
+        protected override void OnMouseEnter(MouseEventArgs e)
+        {
+            base.OnMouseEnter(e);
+
+            this.CloseButton.Visibility = Visibility.Visible;
+        }
+
+        protected override void OnMouseLeave(MouseEventArgs e)
+        {
+            base.OnMouseLeave(e);
+
+            this.CloseButton.Visibility = Visibility.Collapsed;
+        }
+
         protected override void OnKeyDown(KeyEventArgs e)
         {
             base.OnKeyDown(e);
@@ -141,6 +155,11 @@ namespace AimpBetterCoverDisplay.UI
 
             control.Visibility = image == null ? Visibility.Collapsed : Visibility.Visible;
             control.Source = image;
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

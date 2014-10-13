@@ -4,5 +4,8 @@
         xmlns:pc="clr-namespace:LordJZ.Presentation.Controls;assembly=LordJZ.Presentation"
         Title="MainWindow" Height="350" Width="525" WindowStyle="None" ResizeMode="CanResize" ShowInTaskbar="False"
                Style="{StaticResource DefaultBaseWindowStyle}" Background="#20111111" AllowsTransparency="True">
-  <Image Name="ImageControl" Stretch="Uniform" StretchDirection="DownOnly" Visibility="Collapsed"/>
+  <Grid>
+    <Image Name="ImageControl" Stretch="Uniform" StretchDirection="DownOnly" Visibility="Collapsed"/>
+    <Button Width="80" Height="23" Content="Close" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10" Visibility="Collapsed" Name="CloseButton" Click="CloseButton_Click" />
+  </Grid>
 </pc:BaseWindow>
