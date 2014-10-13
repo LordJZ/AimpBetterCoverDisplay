@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AimpBetterCoverDisplay.UI", "AimpBetterCoverDisplay.UI\AimpBetterCoverDisplay.UI.csproj", "{49D80BC2-D119-4ACF-8B5E-E569F1AEE9D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AimpBetterCoverDisplay", "AimpBetterCoverDisplay\AimpBetterCoverDisplay.csproj", "{1880E778-F056-404C-AD21-816AA0EFAF95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AimpBetterCoverDisplay.Plugin", "AimpBetterCoverDisplay.Plugin\AimpBetterCoverDisplay.Plugin.csproj", "{629A21B9-8016-4766-B926-67851FD88406}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49D80BC2-D119-4ACF-8B5E-E569F1AEE9D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49D80BC2-D119-4ACF-8B5E-E569F1AEE9D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49D80BC2-D119-4ACF-8B5E-E569F1AEE9D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49D80BC2-D119-4ACF-8B5E-E569F1AEE9D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1880E778-F056-404C-AD21-816AA0EFAF95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1880E778-F056-404C-AD21-816AA0EFAF95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1880E778-F056-404C-AD21-816AA0EFAF95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1880E778-F056-404C-AD21-816AA0EFAF95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{629A21B9-8016-4766-B926-67851FD88406}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{629A21B9-8016-4766-B926-67851FD88406}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{629A21B9-8016-4766-B926-67851FD88406}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{629A21B9-8016-4766-B926-67851FD88406}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
