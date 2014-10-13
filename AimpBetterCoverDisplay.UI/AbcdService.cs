@@ -9,12 +9,12 @@ using System.Windows.Threading;
 
 namespace AimpBetterCoverDisplay.UI
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     class AbcdService : IAbcdService
     {
-        public async void NowPlayingChanged(NowPlaying np)
+        public void NowPlayingChanged(NowPlaying np)
         {
-            await Dispatcher.CurrentDispatcher.InvokeAsync(() => MessageBox.Show(np.FileName));
+            CoverSearcher.Search(np);
         }
     }
 }

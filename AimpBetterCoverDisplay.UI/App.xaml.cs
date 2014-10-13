@@ -18,6 +18,8 @@ namespace AimpBetterCoverDisplay.UI
         {
             LordJZ.Presentation.Controls.BaseWindow.PerMonitorDpiAware = true;
 
+            System.Threading.Thread.CurrentThread.Name = "AimpBetterCoverDisplay.UI";
+
             base.OnStartup(e);
 
             int idx = Array.IndexOf(e.Args, "/pipename");

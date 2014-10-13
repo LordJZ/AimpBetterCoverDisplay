@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -102,6 +103,44 @@ namespace AimpBetterCoverDisplay.UI
         void UpdateConfig()
         {
             Config.Instance.Placement = this.NativeWindow.Placement;
+        }
+
+        public void SetCover(System.Drawing.Bitmap cover)
+        {
+            if (cover == null)
+            {
+                SetImage(null);
+                return;
+            }
+
+            BitmapImage image;
+            try
+            {
+                System.IO.MemoryStream memoryStream = new System.IO.MemoryStream();
+                cover.SetResolution(96, 96);
+                cover.Save(memoryStream, ImageFormat.Png);
+
+                memoryStream.Position = 0;
+
+                image = new BitmapImage();
+                image.BeginInit();
+                image.StreamSource = memoryStream;
+                image.EndInit();
+            }
+            catch
+            {
+                image = null;
+            }
+
+            SetImage(image);
+        }
+
+        void SetImage(ImageSource image)
+        {
+            Image control = this.ImageControl;
+
+            control.Visibility = image == null ? Visibility.Collapsed : Visibility.Visible;
+            control.Source = image;
         }
     }
 }
