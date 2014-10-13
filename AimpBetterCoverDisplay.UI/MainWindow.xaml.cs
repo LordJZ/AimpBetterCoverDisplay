@@ -36,6 +36,9 @@ namespace AimpBetterCoverDisplay.UI
             {
                 NativeWindow window = this.NativeWindow;
                 window.Placement = placement;
+
+                // adjust again after dpi settings have been applied
+                Dispatcher.InvokeAsync(() => window.Placement = placement);
             }
         }
 
