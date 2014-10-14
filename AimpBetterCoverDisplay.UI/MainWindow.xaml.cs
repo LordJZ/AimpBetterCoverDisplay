@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using LordJZ.WinAPI;
 
 namespace AimpBetterCoverDisplay.UI
@@ -119,37 +109,7 @@ namespace AimpBetterCoverDisplay.UI
             Config.Instance.Placement = this.NativeWindow.Placement;
         }
 
-        public void SetCover(System.Drawing.Bitmap cover)
-        {
-            if (cover == null)
-            {
-                SetImage(null);
-                return;
-            }
-
-            BitmapImage image;
-            try
-            {
-                System.IO.MemoryStream memoryStream = new System.IO.MemoryStream();
-                cover.SetResolution(96, 96);
-                cover.Save(memoryStream, ImageFormat.Png);
-
-                memoryStream.Position = 0;
-
-                image = new BitmapImage();
-                image.BeginInit();
-                image.StreamSource = memoryStream;
-                image.EndInit();
-            }
-            catch
-            {
-                image = null;
-            }
-
-            SetImage(image);
-        }
-
-        void SetImage(ImageSource image)
+        public void SetCover(ImageSource image)
         {
             Image control = this.ImageControl;
 

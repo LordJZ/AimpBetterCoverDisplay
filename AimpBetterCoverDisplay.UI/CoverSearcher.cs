@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using LordJZ.Collections;
+using LordJZ.Presentation;
 using TagLib;
-using File = System.IO.File;
 
 namespace AimpBetterCoverDisplay.UI
 {
@@ -36,7 +36,13 @@ namespace AimpBetterCoverDisplay.UI
 
         static void InternalSearch(NowPlaying np)
         {
-            Bitmap bmp = GetBitmap(np);
+            ImageSource bmp = GetBitmap(np);
+
+            // ReSharper disable CompareOfFloatsByEqualityOperator
+            BitmapSource bms = bmp as BitmapSource;
+            if (bms != null && (bms.DpiX != 96.0 || bms.DpiY != 96.0))
+                bms.SetDpi(96.0, 96.0);
+            // ReSharper restore CompareOfFloatsByEqualityOperator
 
             Application.Current.Dispatcher.InvokeAsync(
                 () =>
@@ -46,9 +52,9 @@ namespace AimpBetterCoverDisplay.UI
                 });
         }
 
-        static Bitmap GetBitmap(NowPlaying np)
+        static ImageSource GetBitmap(NowPlaying np)
         {
-            Bitmap result = null;
+            ImageSource result = null;
 
             try
             {
@@ -72,7 +78,7 @@ namespace AimpBetterCoverDisplay.UI
             return result;
         }
 
-        static Bitmap GetFromDirectory(string directoryName)
+        static ImageSource GetFromDirectory(string directoryName)
         {
             if (string.IsNullOrEmpty(directoryName))
                 return null;
@@ -91,8 +97,8 @@ namespace AimpBetterCoverDisplay.UI
             {
                 try
                 {
-                    MemoryStream memoryStream = new MemoryStream(File.ReadAllBytes(filename));
-                    return (Bitmap)Image.FromStream(memoryStream);
+                    return BitmapFrame.Create(new Uri(filename),
+                                              BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
                 }
                 catch
                 {
@@ -102,17 +108,24 @@ namespace AimpBetterCoverDisplay.UI
             return null;
         }
 
-        static Bitmap GetFromTags(string filename)
+        static ImageSource GetFromTags(string filename)
         {
             using (TagLib.File file = TagLib.File.Create(filename))
             {
-                IPicture pic = file.Tag.Pictures.FirstOrDefault();
-                if (pic == null)
-                    return null;
-
-                byte[] data = pic.Data.Data;
-                return (Bitmap)Image.FromStream(new MemoryStream(data));
+                foreach (IPicture pic in file.Tag.Pictures)
+                {
+                    try
+                    {
+                        return BitmapFrame.Create(new MemoryStream(pic.Data.Data),
+                                                  BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+                    }
+                    catch
+                    {
+                    }
+                }
             }
+
+            return null;
         }
     }
 }
