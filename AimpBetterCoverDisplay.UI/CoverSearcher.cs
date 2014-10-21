@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -38,15 +39,15 @@ namespace AimpBetterCoverDisplay.UI
         {
             ImageSource bmp = GetBitmap(np);
 
-            // ReSharper disable CompareOfFloatsByEqualityOperator
-            BitmapSource bms = bmp as BitmapSource;
-            if (bms != null && (bms.DpiX != 96.0 || bms.DpiY != 96.0))
-                bms.SetDpi(96.0, 96.0);
-            // ReSharper restore CompareOfFloatsByEqualityOperator
-
             Application.Current.Dispatcher.InvokeAsync(
                 () =>
                 {
+                    // ReSharper disable CompareOfFloatsByEqualityOperator
+                    BitmapSource bms = bmp as BitmapSource;
+                    if (bms != null && (bms.DpiX != 96.0 || bms.DpiY != 96.0))
+                        bms.SetDpi(96.0, 96.0);
+                    // ReSharper restore CompareOfFloatsByEqualityOperator
+
                     MainWindow window = (MainWindow)Application.Current.MainWindow;
                     window.SetCover(bmp);
                 });
@@ -103,6 +104,15 @@ namespace AimpBetterCoverDisplay.UI
                 catch
                 {
                 }
+
+                // WPF can't load some images for some reason, so try GDI+
+                try
+                {
+                    return GetBitmapOnUIThread(filename);
+                }
+                catch
+                {
+                }
             }
 
             return null;
@@ -114,18 +124,58 @@ namespace AimpBetterCoverDisplay.UI
             {
                 foreach (IPicture pic in file.Tag.Pictures)
                 {
+                    Stream stream;
                     try
                     {
-                        return BitmapFrame.Create(new MemoryStream(pic.Data.Data),
-                                                  BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+                        stream = new MemoryStream(pic.Data.Data);
                     }
                     catch
                     {
+                        continue;
+                    }
+
+                    try
+                    {
+                        return BitmapFrame.Create(stream,
+                            BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+                    }
+                    catch
+                    {
+                        stream.Position = 0;
+                    }
+
+                    // WPF can't load some images for some reason, so try GDI+
+                    try
+                    {
+                        return GetBitmapOnUIThread(stream);
+                    }
+                    catch
+                    {
+                        stream.Position = 0;
                     }
                 }
             }
 
             return null;
+        }
+
+        static ImageSource GetBitmapOnUIThread(Stream stream)
+        {
+            return GetBitmapOnUIThread(() => new Bitmap(stream));
+        }
+
+        static ImageSource GetBitmapOnUIThread(string filename)
+        {
+            return GetBitmapOnUIThread(() => new Bitmap(filename));
+        }
+
+        static ImageSource GetBitmapOnUIThread(Func<Bitmap> factory)
+        {
+            return Application.Current.Dispatcher.Invoke(() =>
+            {
+                using (Bitmap bitmap = factory())
+                    return bitmap.ToImageSource();
+            });
         }
     }
 }
