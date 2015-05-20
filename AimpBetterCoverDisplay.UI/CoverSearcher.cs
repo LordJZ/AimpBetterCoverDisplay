@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -55,6 +57,8 @@ namespace AimpBetterCoverDisplay.UI
 
         static ImageSource GetBitmap(NowPlaying np)
         {
+            np.FileName = ExpandCuePath(np.FileName);
+
             ImageSource result = null;
 
             try
@@ -77,6 +81,58 @@ namespace AimpBetterCoverDisplay.UI
             }
 
             return result;
+        }
+
+        static readonly Regex s_cuePathRegex = new Regex("^(.+):\\d+$");
+        static readonly Regex s_cueFileRegex = new Regex(@"^\s*FILE\s*""(.+)""[^""]*?$", RegexOptions.Multiline);
+        static readonly string[] s_reverseSearchExtensions = { "mp3", "m4a", "ogg", "opus", "ape", "flac" };
+
+        static string ExpandCuePath(string path)
+        {
+            Match match = s_cuePathRegex.Match(path);
+            if (!match.Success)
+                return path;
+
+            path = match.Groups[1].Value;
+
+            List<string> paths = new List<string>(s_reverseSearchExtensions.Length + 3);
+
+            try
+            {
+                string cueText = System.IO.File.ReadAllText(path);
+
+                match = s_cueFileRegex.Match(cueText);
+                if (match.Success)
+                {
+                    string filename = match.Groups[1].Value;
+                    string folder = Path.GetDirectoryName(path);
+                    paths.Add(Path.Combine(folder, filename));
+                    if (filename.IndexOf('"') >= 0)
+                    {
+                        paths.Add(Path.Combine(folder, filename.Replace("\"\"", "\"")));
+                        paths.Add(Path.Combine(folder, filename.Replace("\\\"", "\"")));
+                    }
+                }
+            }
+            catch
+            {
+            }
+
+            paths.AddRange(s_reverseSearchExtensions.Select(extension => Path.ChangeExtension(path, extension)));
+
+            foreach (string expandedPath in paths)
+            {
+                try
+                {
+                    if (System.IO.File.Exists(expandedPath))
+                        return expandedPath;
+                }
+                catch
+                {
+                }
+            }
+
+            return path;
         }
 
         static ImageSource GetFromDirectory(string directoryName)
