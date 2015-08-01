@@ -4,9 +4,10 @@
         xmlns:pc="clr-namespace:LordJZ.Presentation.Controls;assembly=LordJZ.Presentation"
         Title="Cover Art" Height="350" Width="525" WindowStyle="None" ResizeMode="CanResize"
                Style="{StaticResource DefaultBaseWindowStyle}" Background="#20111111" AllowsTransparency="True" Icon="icon.png"
-               TitleBarHeight="0" BorderThickness="0">
+               TitleBarHeight="0" BorderThickness="0" SizeChanged="MainWindow_OnSizeChanged"
+               Name="Window">
   <Grid>
-    <Image Name="ImageControl" Stretch="Uniform" StretchDirection="DownOnly" Visibility="Collapsed"/>
-    <Button Width="80" Height="23" Content="Close" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10" Visibility="Collapsed" Name="CloseButton" Click="CloseButton_Click" />
+    <Image Grid.Column="0" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Name="ImageControl" Stretch="Uniform" StretchDirection="DownOnly" Visibility="Collapsed"/>
+    <Button Grid.Column="0" Grid.Row="0" Width="80" Height="23" Content="Close" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10" Visibility="Collapsed" Name="CloseButton" Click="CloseButton_Click" />
   </Grid>
 </pc:BaseWindow>

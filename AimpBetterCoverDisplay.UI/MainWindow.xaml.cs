@@ -115,11 +115,50 @@ namespace AimpBetterCoverDisplay.UI
 
             control.Visibility = image == null ? Visibility.Collapsed : Visibility.Visible;
             control.Source = image;
+
+            UpdateStretch();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        void UpdateStretch()
+        {
+            Image control = this.ImageControl;
+            if (control.Visibility != Visibility.Visible)
+                return;
+
+            bool fit = FitImage();
+            if (fit)
+                control.StretchDirection = StretchDirection.Both;
+            else
+                control.StretchDirection = StretchDirection.DownOnly;
+        }
+
+        bool FitImage()
+        {
+            ImageSource source = this.ImageControl.Source;
+            double w = source.Width;
+            double h = source.Height;
+
+            Size size = PointToScreenAbsolute(new Size(this.ActualWidth, this.ActualHeight));
+
+            if (w >= size.Width || h >= size.Height)
+                return false;
+
+            double ratioW = (size.Width - w) / size.Width;
+            double ratioH = (size.Height - w) / size.Height;
+            if (Math.Min(ratioW, ratioH) > .2)
+                return false;
+
+            return true;
+        }
+
+        void MainWindow_OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            UpdateStretch();
         }
     }
 }
