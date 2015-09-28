@@ -140,7 +140,7 @@ namespace AimpBetterCoverDisplay.UI
             if (string.IsNullOrEmpty(directoryName))
                 return null;
 
-            string[] patterns = { "cover.*", "*.jpg", "*.png", "*.jpeg" };
+            string[] patterns = { "folder.*", "cover.*", "*.jpg", "*.png", "*.jpeg" };
             string[] files;
             try
             {
