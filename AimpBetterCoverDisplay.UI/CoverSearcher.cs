@@ -58,6 +58,9 @@ namespace AimpBetterCoverDisplay.UI
 
         static ImageSource GetBitmap(NowPlaying np)
         {
+            if (np.FileName.StartsWith("http"))
+                np.FileName = Path.Combine(LordJZ.WinAPI.KnownFolders.GetPath(LordJZ.WinAPI.KnownFolder.Downloads), "radio.mp3");
+
             np.FileName = ExpandCuePath(np.FileName);
 
             ImageSource result = null;
