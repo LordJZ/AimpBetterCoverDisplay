@@ -34,6 +34,7 @@ namespace AimpBetterCoverDisplay.UI
             }
             catch
             {
+                // ignore
             }
         }
 
@@ -67,6 +68,7 @@ namespace AimpBetterCoverDisplay.UI
             }
             catch
             {
+                // ignore
             }
 
             if (result != null)
@@ -78,6 +80,7 @@ namespace AimpBetterCoverDisplay.UI
             }
             catch
             {
+                // ignore
             }
 
             return result;
@@ -116,6 +119,7 @@ namespace AimpBetterCoverDisplay.UI
             }
             catch
             {
+                // ignore
             }
 
             paths.AddRange(s_reverseSearchExtensions.Select(extension => Path.ChangeExtension(path, extension)));
@@ -129,6 +133,7 @@ namespace AimpBetterCoverDisplay.UI
                 }
                 catch
                 {
+                    // ignore
                 }
             }
 
@@ -159,6 +164,7 @@ namespace AimpBetterCoverDisplay.UI
                 }
                 catch
                 {
+                    // ignore
                 }
 
                 // WPF can't load some images for some reason, so try GDI+
@@ -168,6 +174,7 @@ namespace AimpBetterCoverDisplay.UI
                 }
                 catch
                 {
+                    // ignore
                 }
             }
 

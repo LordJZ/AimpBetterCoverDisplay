@@ -58,6 +58,7 @@ namespace AimpBetterCoverDisplay.UI
             }
             catch
             {
+                // ignore
             }
         }
     }

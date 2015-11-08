@@ -46,6 +46,7 @@ namespace AimpBetterCoverDisplay.Plugin
                 }
                 catch
                 {
+                    // ignore
                 }
             }
 
@@ -57,6 +58,7 @@ namespace AimpBetterCoverDisplay.Plugin
                 }
                 catch
                 {
+                    // ignore
                 }
             }
         }
@@ -93,6 +95,7 @@ namespace AimpBetterCoverDisplay.Plugin
             }
             catch
             {
+                // ignore
             }
 
             return np;
