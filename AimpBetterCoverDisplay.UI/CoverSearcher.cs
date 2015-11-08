@@ -64,7 +64,7 @@ namespace AimpBetterCoverDisplay.UI
 
             try
             {
-                result = GetFromDirectory(Path.GetDirectoryName(np.FileName));
+                result = GetFromDirectory(Path.GetDirectoryName(np.FileName), Path.GetFileName(np.FileName));
             }
             catch
             {
@@ -140,12 +140,23 @@ namespace AimpBetterCoverDisplay.UI
             return path;
         }
 
-        static ImageSource GetFromDirectory(string directoryName)
+        static ImageSource GetFromDirectory(string directoryName, string fileName)
         {
             if (string.IsNullOrEmpty(directoryName))
                 return null;
 
-            string[] patterns = { "folder.*", "cover.*", "*.jpg", "*.png", "*.jpeg" };
+            string[] patterns =
+            {
+                Path.ChangeExtension(fileName, "jpg"),
+                Path.ChangeExtension(fileName, "png"),
+                Path.ChangeExtension(fileName, "jpeg"),
+                "folder.*",
+                "cover.*",
+                "*.jpg",
+                "*.png",
+                "*.jpeg"
+            };
+
             string[] files;
             try
             {
