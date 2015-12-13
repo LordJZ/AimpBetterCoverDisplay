@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LordJZ.Tests", "deps\LordJZ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LordJZ.WinAPI", "deps\LordJZ.WinAPI\LordJZ.WinAPI.csproj", "{44947934-AC3F-40E0-9303-21EF5975FD7F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AimpBetterCoverDisplay.MusicBee", "AimpBetterCoverDisplay.MusicBee\AimpBetterCoverDisplay.MusicBee.csproj", "{41C5625A-FB95-4640-A0F5-5D915E92213C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug No Contracts|Any CPU = Debug No Contracts|Any CPU
@@ -68,6 +70,12 @@ Global
 		{44947934-AC3F-40E0-9303-21EF5975FD7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44947934-AC3F-40E0-9303-21EF5975FD7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44947934-AC3F-40E0-9303-21EF5975FD7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41C5625A-FB95-4640-A0F5-5D915E92213C}.Debug No Contracts|Any CPU.ActiveCfg = Debug|Any CPU
+		{41C5625A-FB95-4640-A0F5-5D915E92213C}.Debug No Contracts|Any CPU.Build.0 = Debug|Any CPU
+		{41C5625A-FB95-4640-A0F5-5D915E92213C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41C5625A-FB95-4640-A0F5-5D915E92213C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41C5625A-FB95-4640-A0F5-5D915E92213C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41C5625A-FB95-4640-A0F5-5D915E92213C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
