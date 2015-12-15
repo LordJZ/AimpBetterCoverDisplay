@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using LordJZ.Collections;
 using LordJZ.Presentation;
-using TagLib;
 
 namespace AimpBetterCoverDisplay.UI
 {
@@ -199,17 +198,9 @@ namespace AimpBetterCoverDisplay.UI
         {
             using (TagLib.File file = TagLib.File.Create(filename))
             {
-                foreach (IPicture pic in file.Tag.Pictures)
+                foreach (byte[] data in CollectPictures(file))
                 {
-                    Stream stream;
-                    try
-                    {
-                        stream = new MemoryStream(pic.Data.Data);
-                    }
-                    catch
-                    {
-                        continue;
-                    }
+                    Stream stream = new MemoryStream(data);
 
                     try
                     {
@@ -234,6 +225,75 @@ namespace AimpBetterCoverDisplay.UI
             }
 
             return null;
+        }
+
+        static IEnumerable<byte[]> CollectPictures(TagLib.File file)
+        {
+            List<byte[]> pics = new List<byte[]>();
+            try
+            {
+                foreach (TagLib.IPicture pic in file.Tag.Pictures)
+                {
+                    try
+                    {
+                        pics.Add(pic.Data.Data);
+                    }
+                    catch
+                    {
+                        // ignore
+                    }
+                }
+            }
+            catch
+            {
+                // ignore
+            }
+
+            TagLib.Ogg.GroupedComment grouped = file.Tag as TagLib.Ogg.GroupedComment;
+            if (grouped != null)
+            {
+                try
+                {
+                    ExtractOggPics(grouped, pics);
+                }
+                catch
+                {
+                    // ignore
+                }
+            }
+
+            return pics;
+        }
+
+        static void ExtractOggPics(TagLib.Ogg.GroupedComment grouped, List<byte[]> pics)
+        {
+            foreach (TagLib.Ogg.XiphComment comment in grouped.Comments)
+            {
+                try
+                {
+                    string[] fields = comment.GetField("METADATA_BLOCK_PICTURE");
+                    if (fields == null)
+                        continue;
+
+                    foreach (string field in fields)
+                    {
+                        try
+                        {
+                            byte[] flacPic = Convert.FromBase64String(field);
+                            TagLib.Flac.Picture pic = new TagLib.Flac.Picture(new TagLib.ByteVector(flacPic));
+                            pics.Add(pic.Data.Data);
+                        }
+                        catch
+                        {
+                            // ignore
+                        }
+                    }
+                }
+                catch
+                {
+                    // ignore
+                }
+            }
         }
 
         static ImageSource GetBitmapOnUIThread(Stream stream)
