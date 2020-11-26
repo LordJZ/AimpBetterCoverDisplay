@@ -150,7 +150,7 @@ namespace AimpBetterCoverDisplay.UI
 
             double ratioW = (size.Width - w) / size.Width;
             double ratioH = (size.Height - w) / size.Height;
-            if (Math.Min(ratioW, ratioH) > .2)
+            if (Math.Min(ratioW, ratioH) > .4)
                 return false;
 
             return true;
